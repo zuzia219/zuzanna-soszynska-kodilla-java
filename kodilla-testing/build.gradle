@@ -2,6 +2,7 @@ group 'com.kodilla'
 version '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8
 
