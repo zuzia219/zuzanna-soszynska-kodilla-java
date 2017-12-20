@@ -2,21 +2,33 @@ package com.kodilla.exception.test;
 
 public class FirstChallenge {
 
-    public double divide(double a, double b) {
+    public Integer divide(Integer a, Integer b) {
+
+        Integer result = null;
 
         try {
 
-        } catch (ArithmeticException e) {
+            result = a / b;
+
+        } catch (ArithmeticException ex) {
+
+            if (b == 0)
+                System.out.println("You should not devide by O! " + ex);
 
 
         } finally {
 
-            System.out.println("The devision process has ended the result is:");
+            if (b != 0)
+                System.out.println("The devision was succesful");
+            else
+                System.out.println("The devision was unsuccesful");
+
 
         }
-        return a / b;
-    }
 
+        return result;
+
+    }
 
     /**
      * This main can throw an ArithmeticException!!!
@@ -27,9 +39,9 @@ public class FirstChallenge {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
-        double result = firstChallenge.divide(3, 0);
+        Integer result = firstChallenge.divide(3, 0);
 
-        System.out.println(result);
+        System.out.println("The result is: " + result);
 
     }
 }
