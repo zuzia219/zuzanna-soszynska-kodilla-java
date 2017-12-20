@@ -2,6 +2,7 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,7 +157,7 @@ public class BoardTestSuite {
                 .flatMap(t1 -> t1.getTasks().stream())
                 .count();
 
-        double avarage = (double) (howManyDays) / (double) (howManyTasks);
+        double avarage = howManyDays / (double) howManyTasks;
 
         // Then
 
