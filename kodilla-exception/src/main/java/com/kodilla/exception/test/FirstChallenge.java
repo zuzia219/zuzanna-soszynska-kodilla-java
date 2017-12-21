@@ -1,33 +1,13 @@
 package com.kodilla.exception.test;
 
+
 public class FirstChallenge {
 
-    public Integer divide(Integer a, Integer b) {
-
-        Integer result = null;
-
-        try {
-
-            result = a / b;
-
-        } catch (ArithmeticException ex) {
-
-            if (b == 0)
-                System.out.println("You should not devide by O! " + ex);
-
-
-        } finally {
-
-            if (b != 0)
-                System.out.println("The devision was succesful");
-            else
-                System.out.println("The devision was unsuccesful");
-
-
+    public double divide(double a, double b) throws ArithmeticException {
+        if (b == 0) {
+            throw new ArithmeticException();
         }
-
-        return result;
-
+        return a / b;
     }
 
     /**
@@ -38,10 +18,27 @@ public class FirstChallenge {
     public static void main(String[] args) {
 
         FirstChallenge firstChallenge = new FirstChallenge();
+        boolean ifSucceed = false;
+        try {
 
-        Integer result = firstChallenge.divide(3, 0);
+            double result = firstChallenge.divide(3, 0);
 
-        System.out.println("The result is: " + result);
+            System.out.println(result);
+            ifSucceed = true;
+
+        } catch (ArithmeticException ex) {
+
+            System.out.println("You should not devide by O! " + ex);
+
+
+        } finally {
+
+            if (ifSucceed)
+                System.out.println("The devision process has ended successfully");
+            else
+                System.out.println("The devision process has ended unsuccessfully");
+
+        }
 
     }
 }
