@@ -4,7 +4,7 @@ public class FlightFinderRunner {
 
     public static void main(String args[]) {
 
-        Flight flight = new Flight("", "");
+        Flight flight = new Flight("Warsaw", "Gdansk");
 
         FlightFinder flightFinder = new FlightFinder();
 
