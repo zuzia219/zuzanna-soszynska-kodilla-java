@@ -4,17 +4,17 @@ import java.util.Optional;
 
 public final class Flight {
 
-    private final Optional<String> departureAirport;
+    private final String departureAirport;
     private final Optional<String> intermediateAirport;
-    private final Optional<String> arrivalAirport;
+    private final String arrivalAirport;
 
-    public Flight(final Optional<String> departureAirport, final Optional<String> intermediateAirport, final Optional<String> arrivalAirport) {
+    public Flight(String departureAirport, Optional<String> intermediateAirport, String arrivalAirport) {
         this.departureAirport = departureAirport;
         this.intermediateAirport = intermediateAirport;
         this.arrivalAirport = arrivalAirport;
     }
 
-    public Optional<String> getDepartureAirport() {
+    public String getDepartureAirport() {
         return departureAirport;
     }
 
@@ -22,7 +22,7 @@ public final class Flight {
         return intermediateAirport;
     }
 
-    public Optional<String> getArrivalAirport() {
+    public String getArrivalAirport() {
         return arrivalAirport;
     }
 
@@ -48,9 +48,10 @@ public final class Flight {
 
     @Override
     public String toString() {
-        return "Flight: " +
+        return "Flight{" +
                 "departureAirport='" + departureAirport + '\'' +
-                ", intermediateAirport='" + intermediateAirport + '\'' +
-                ", arrivalAirport='" + arrivalAirport + '\'';
+                ", intermediateAirport=" + intermediateAirport +
+                ", arrivalAirport='" + arrivalAirport + '\'' +
+                '}';
     }
 }
