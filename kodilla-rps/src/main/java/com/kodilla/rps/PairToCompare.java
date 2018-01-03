@@ -1,6 +1,5 @@
 package com.kodilla.rps;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class PairToCompare {
@@ -31,22 +30,12 @@ public class PairToCompare {
         return result;
     }
 
-    public static void pairComparing(RpsItem playersChoice, RpsItem computersChoice, int playersPoints, int computersPoints) {
+    public static Points pairComparing(RpsItem playersChoice, RpsItem computersChoice, int playersPoints, int computersPoints, Map<PairToCompare, Boolean> pairToCompareBooleanMap) {
 
         PairToCompare pairToCompare = new PairToCompare(playersChoice.getItemsName(), computersChoice.getItemsName());
-
-        Map<PairToCompare, Boolean> pairToCompareBooleanMap = new HashMap<PairToCompare, Boolean>();
-        pairToCompareBooleanMap.put(new PairToCompare("Rock", "Paper"), false);
-        pairToCompareBooleanMap.put(new PairToCompare("Rock", "Scissors"), true);
-        pairToCompareBooleanMap.put(new PairToCompare("Paper", "Scissors"), false);
-        pairToCompareBooleanMap.put(new PairToCompare("Paper", "Rock"), true);
-        pairToCompareBooleanMap.put(new PairToCompare("Scissors", "Rock"), false);
-        pairToCompareBooleanMap.put(new PairToCompare("Scissors", "Paper"), true);
-
         if ((playersChoice.getItemsName()).equals(computersChoice.getItemsName()))
             System.out.println("It's a draw");
         else {
-
             if (pairToCompareBooleanMap.get(pairToCompare)) {
                 playersPoints++;
                 System.out.println("");
@@ -57,5 +46,7 @@ public class PairToCompare {
                 System.out.println(playersChoice.getItemsName() + " is beaten by " + computersChoice.getItemsName());
             }
         }
+        Points points = new Points(playersPoints, computersPoints);
+        return points;
     }
 }

@@ -1,25 +1,22 @@
 package com.kodilla.rps;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
+
 
 public class Itemchoice {
 
-    public RpsItem itemChoice(int choice) {
+    public RpsItem itemChoice(String choice,  Map<String, RpsItem> mapOfKeyboardKeys) {
 
-        List<RpsItem> availableItems = new ArrayList<>();
-        availableItems.add(new Rock());
-        availableItems.add(new Paper());
-        availableItems.add(new Scissors());
-
-        return availableItems.get(choice - 1);
+        return mapOfKeyboardKeys.get(choice) ;
     }
 
-    public int computersChoiceGenerator() {
+    public String computersChoiceGenerator(List<String> listOfKeyboardKeys) {
 
         Random randomGenerator = new Random();
-        return (randomGenerator.nextInt(3) + 1);
+        int choice = randomGenerator.nextInt(listOfKeyboardKeys.size());
 
+        return listOfKeyboardKeys.get(choice);
     }
 }
