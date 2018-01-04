@@ -12,9 +12,9 @@ public final class AvailableItems {
 
         Map<String, RpsItem> mapOfKeyboardKeys = new HashMap<>();
 
-        mapOfKeyboardKeys.put("1", new Rock());
-        mapOfKeyboardKeys.put("2", new Paper());
-        mapOfKeyboardKeys.put("3", new Scissors());
+        mapOfKeyboardKeys.put("1", new RpsItem("Rock"));
+        mapOfKeyboardKeys.put("2", new RpsItem("Paper"));
+        mapOfKeyboardKeys.put("3", new RpsItem("Scissors"));
 
         return mapOfKeyboardKeys;
     }
@@ -33,8 +33,7 @@ public final class AvailableItems {
 
     public List<String> getListOfKeyboardKeys(Map<String, RpsItem> mapOfKeyboardKeys) {
 
-        List<String> listOfKeyboardKeys = new ArrayList<>();
-        listOfKeyboardKeys = mapOfKeyboardKeys.entrySet().stream()
+        List<String> listOfKeyboardKeys = mapOfKeyboardKeys.entrySet().stream()
                 .map(entry -> entry.getKey())
                 .collect(Collectors.toList());
 
@@ -44,9 +43,7 @@ public final class AvailableItems {
     public void printItemOptions(Map<String, RpsItem> mapOfKeyboardKeys) {
 
         System.out.println("Available options are: ");
-        Map<String, String> mapOfItemsNames = new HashMap<>();
-
-        mapOfItemsNames = mapOfKeyboardKeys.entrySet().stream()
+        Map<String, String> mapOfItemsNames = mapOfKeyboardKeys.entrySet().stream()
                 .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue().getItemsName()));
 
         mapOfItemsNames.entrySet().stream()

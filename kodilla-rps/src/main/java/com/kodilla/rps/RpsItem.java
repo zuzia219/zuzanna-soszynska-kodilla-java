@@ -1,8 +1,16 @@
 package com.kodilla.rps;
 
-public interface RpsItem {
+public class RpsItem {
 
-    String getItemsName();
+    String itemsName;
+
+    public RpsItem(String itemsName) {
+        this.itemsName = itemsName;
+    }
+
+    public String getItemsName() {
+        return itemsName;
+    }
 }
 
 
