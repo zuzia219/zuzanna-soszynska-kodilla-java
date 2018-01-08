@@ -33,9 +33,9 @@ public class PairToCompare {
     public static Points pairComparing(RpsItem playersChoice, RpsItem computersChoice, int playersPoints, int computersPoints, Map<PairToCompare, Boolean> pairToCompareBooleanMap) {
 
         PairToCompare pairToCompare = new PairToCompare(playersChoice.getItemsName(), computersChoice.getItemsName());
-        if ((playersChoice.getItemsName()).equals(computersChoice.getItemsName()))
+        if ((playersChoice.getItemsName()).equals(computersChoice.getItemsName())) {
             System.out.println("It's a draw");
-        else {
+        } else {
             if (pairToCompareBooleanMap.get(pairToCompare)) {
                 playersPoints++;
                 System.out.println("");
