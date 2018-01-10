@@ -8,8 +8,6 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class BoardConfig {
 
-    @Autowired
-
     @Bean(name = "toDoList")
     @Scope("prototype")
     public TaskList getToDoList() {
