@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class LibraryTestSuite {
     @Test
-    public void testGetBooks() {
+    public void testGetBooks() throws Exception {
 
         //Given
         Library library = new Library("School library");
@@ -22,20 +22,14 @@ public class LibraryTestSuite {
         library.getBooks().add(book3);
 
         Library clonedLibrary = null;
-        try {
-            clonedLibrary = library.shallowCopy();
-            clonedLibrary.setName("City library");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+
+        clonedLibrary = library.shallowCopy();
+        clonedLibrary.setName("City library");
 
         Library deepClonedLibrary = null;
-        try {
-            deepClonedLibrary = library.deepCopy();
-            deepClonedLibrary.setName("Voivodeship library");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+        deepClonedLibrary = library.deepCopy();
+        deepClonedLibrary.setName("Voivodeship library");
+
 
         library.getBooks().remove(book1);
         //Then
