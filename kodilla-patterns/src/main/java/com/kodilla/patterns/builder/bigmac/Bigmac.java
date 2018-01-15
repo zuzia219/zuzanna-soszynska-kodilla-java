@@ -1,6 +1,5 @@
 package com.kodilla.patterns.builder.bigmac;
 
-import javax.management.relation.RoleInfoNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,40 +14,17 @@ public class Bigmac {
         private int burgers;
         private String sauce;
         private List<String> ingridients = new ArrayList<>();
-        private static List<String> availableIngriedients = new ArrayList<>();
-        private static List<String> availableRolls = new ArrayList<>();
-        private static List<String> availableSauces = new ArrayList<>();
-        private final static int maxNumberOfBurgers = 3;
+        private List<String> availableIngriedients;
+        private List<String> availableRolls;
+        private List<String> availableSauces;
+        private int maxNumberOfBurgers;
 
-        public static List<String> setAvailableIngriedients() {
-            availableIngriedients.add("lettuce");
-            availableIngriedients.add("onion");
-            availableIngriedients.add("bacon");
-            availableIngriedients.add("cucumber");
-            availableIngriedients.add("chilli pepper");
-            availableIngriedients.add("mushroom");
-            availableIngriedients.add("shrimps");
-            availableIngriedients.add("cheese");
-            return availableIngriedients;
+        public BigmacBuilder(List<String> availableIngriedients, List<String> availableRolls, List<String> availableSauces, int maxNumberOfBurgers) {
+            this.availableIngriedients = availableIngriedients;
+            this.availableRolls = availableRolls;
+            this.availableSauces = availableSauces;
+            this.maxNumberOfBurgers = maxNumberOfBurgers;
         }
-
-        public static List<String> setAvailableRolls() {
-            availableRolls.add("with sesame");
-            availableRolls.add("without sesame");
-            return availableRolls;
-        }
-
-        public static List<String> setAvailableSauces() {
-            availableSauces.add("standard");
-            availableSauces.add("1000 islands");
-            availableSauces.add("barbecue");
-            return availableSauces;
-        }
-
-        public static int setMaxNumberOfBurgers() {
-            return maxNumberOfBurgers;
-        }
-
 
 
         public BigmacBuilder roll(String roll) {
