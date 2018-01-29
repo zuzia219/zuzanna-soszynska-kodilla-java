@@ -17,7 +17,7 @@ public class TaskList {
         this.listName = listName;
         this.description = description;
     }
-git
+
     @Id
     @Column(name = "ID")
     @GeneratedValue
