@@ -17,10 +17,9 @@ public class TaskList {
         this.listName = listName;
         this.description = description;
     }
-
+git
     @Id
-    @Column(name = "ID", unique = true)
-    @NotNull
+    @Column(name = "ID")
     @GeneratedValue
     public int getId() {
         return id;
