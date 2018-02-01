@@ -1,22 +1,27 @@
 package com.kodilla.sudoku;
 
-import java.util.Scanner;
+
+import static com.kodilla.sudoku.SudokuBoardPrinter.printSudokuBoard;
 
 public class SudokuGame {
 
     public static void main(String[] args) {
 
-        Character key = 13;
-        System.out.println(key);
-        System.out.println("press enter:");
-        Scanner scanner = new Scanner(System.in);
-        String pressedKey = scanner.next();
 
-        boolean rightKey = false;
-        if(pressedKey.equals(Character.toString(key))) {
-            rightKey = true;
+        SudokuRow sudokuRow = new SudokuRow();
+        SudokuBoard board = new SudokuBoard();
+        for (int n = 0; n <= 8; n++) {
+            sudokuRow.getSudokuElementList().add(new SudokuElement());
         }
-        System.out.println(rightKey);
+        for (int k = 0; k <= 8; k++) {
+            board.getSudokuRowList().add(sudokuRow);
+
+        }
+        board.getSudokuRowList().get(0).getSudokuElementList().get(8).setValue(2);
+        board.getSudokuRowList().get(8).getSudokuElementList().get(7).setValue(5);
+        System.out.println(board.getSudokuRowList().get(8).getSudokuElementList().get(7).getValue());
+
+        printSudokuBoard(board);
 
     }
 }
