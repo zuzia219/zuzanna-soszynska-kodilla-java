@@ -1,5 +1,8 @@
 package com.kodilla.sudoku;
 
+import static com.kodilla.sudoku.SudokuBoardPrinter.printSudokuBoard;
+import static com.kodilla.sudoku.SudokuBoardPrinter.printSudokuBoardPossibleValues;
+
 public class SudokuSolver {
 
     SudokuBoard sudokuBoard;
@@ -17,6 +20,10 @@ public class SudokuSolver {
         return valuesSetCounter;
     }
 
+    public void setValuesSetCounter(Integer valuesSetCounter) {
+        this.valuesSetCounter = valuesSetCounter;
+    }
+
     public SudokuSolver eliminateFromColumns(SudokuBoard board) {
         Integer currentValue;
         for (int v = 0; v <= 8; v++) {
@@ -30,6 +37,7 @@ public class SudokuSolver {
                         board.getSudokuRowList().get(k).getSudokuElementList().get(n).setValue(valueToSet);
                         board.getSudokuRowList().get(k).getSudokuElementList().get(n).getPossibleValues().clear();
                         valuesSetCounter++;
+                        System.out.println("current set: "+ valuesSetCounter);
                     }
                 }
             }
@@ -49,6 +57,8 @@ public class SudokuSolver {
                         board.getSudokuRowList().get(n).getSudokuElementList().get(k).setValue(valueToSet);
                         board.getSudokuRowList().get(n).getSudokuElementList().get(k).getPossibleValues().clear();
                         valuesSetCounter++;
+                        System.out.println("current set: "+ valuesSetCounter);
+
                     }
                 }
             }
@@ -73,6 +83,7 @@ public class SudokuSolver {
                                     board.getSudokuRowList().get(k).getSudokuElementList().get(l).setValue(valueToSet);
                                     board.getSudokuRowList().get(k).getSudokuElementList().get(l).getPossibleValues().clear();
                                     valuesSetCounter++;
+                                    System.out.println("current set: "+ valuesSetCounter);
                                 }
                             }
                         }
@@ -82,5 +93,37 @@ public class SudokuSolver {
         }
 
         return new SudokuSolver(board, valuesSetCounter);
+    }
+
+    public void solveSudoku(SudokuBoard board, SudokuSolver solver) {
+        //int sizeSum = -1;
+
+        while(true) {
+
+            printSudokuBoard(board);
+            printSudokuBoardPossibleValues(board);
+            solver.setValuesSetCounter(0);
+            eliminateFromBlocks(board);
+            //System.out.println("current set: "+ solver.getValuesSetCounter());
+            eliminateFromColumns(board);
+            //System.out.println("current set: "+ solver.getValuesSetCounter());
+            eliminateFromRows(board);
+            //sizeSum = 0;
+            //System.out.println("current set: "+ solver.getValuesSetCounter());
+            int value;
+            /*for (int v = 0; v <= 8; v++) {
+                for (int n = 0; n <= 8; n++) {
+                    value = board.getSudokuRowList().get(v).getSudokuElementList().get(n).getPossibleValues().size();
+                    sizeSum += value;
+                    //System.out.println(value);
+                    //System.out.println("current set: "+ solver.getValuesSetCounter());
+                    //System.out.println(sizeSum);
+                }
+            }*/
+          if (solver.getValuesSetCounter() ==0) {
+                System.out.println("current set: "+ solver.getValuesSetCounter());
+                break;
+          }
+        }
     }
 }
