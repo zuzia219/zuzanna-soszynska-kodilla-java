@@ -31,7 +31,6 @@ public class SudokuSolver {
     }
 
     public void elimianateValues(SudokuBoard board) {
-
         Integer currentValue;
         for (int v = MIN_INDEX; v < MAX_BOARD_INDEX; v++) {
             for (int n = MIN_INDEX; n < MAX_BOARD_INDEX; n++) {
