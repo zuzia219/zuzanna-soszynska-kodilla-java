@@ -13,15 +13,14 @@ public class OrderProcessor {
     }
 
     public OrderDto process(OrderRequest orderRequest) {
-        boolean isOrdered = orderService.createOrder(orderRequest.getUser(), orderRequest.getInvoice());
-        if (isOrdered) {
-            boolean isPaid = paymentService.pay(orderRequest.getInvoice());
-            if (isPaid) {
+        boolean ordered = orderService.createOrder(orderRequest.getUser(), orderRequest.getInvoice());
+        boolean paid = false;
+        if (ordered) {
+            paid = paymentService.pay(orderRequest.getInvoice());
+            if (paid) {
                 deliveryService.deliverTo(orderRequest.getUser());
-                return new OrderDto(orderRequest.getUser(), orderRequest.getInvoice(), true, true);
-            } else {
-                return new OrderDto(orderRequest.getUser(), orderRequest.getInvoice(), true, false);
             }
-        } else return new OrderDto(orderRequest.getUser(), orderRequest.getInvoice(), false, false);
+        }
+        return new OrderDto(orderRequest.getUser(), orderRequest.getInvoice(), ordered, paid);
     }
 }
