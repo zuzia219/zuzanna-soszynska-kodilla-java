@@ -67,7 +67,7 @@ public class CompanyDaoTestSuite {
     }
 
     @Test
-    public void testQueriesFinndByString() {
+    public void testQueriesFindByString() {
 
         //Given
         Employee johnSmith = new Employee("John", "Smith");

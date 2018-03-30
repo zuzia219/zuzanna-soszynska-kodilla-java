@@ -8,16 +8,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DbManagerTestSuite {
-    @Test
+/*    @Test
     public void testConnect() throws SQLException {
         //Given
         //When
         DbManager dbManager = DbManager.getInstance();
         //Then
         Assert.assertNotNull(dbManager.getConnection());
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void testSelectUsers() throws SQLException {
         //Given
         DbManager dbManager = DbManager.getInstance();
@@ -38,9 +38,9 @@ public class DbManagerTestSuite {
         rs.close();
         statement.close();
         Assert.assertEquals(5, counter);
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void testSelectUsersAndPosts() throws SQLException {
 
         //Given
@@ -65,5 +65,5 @@ public class DbManagerTestSuite {
         rs.close();
         statement.close();
         Assert.assertEquals(1, counter);
-    }
+    }*/
 }
