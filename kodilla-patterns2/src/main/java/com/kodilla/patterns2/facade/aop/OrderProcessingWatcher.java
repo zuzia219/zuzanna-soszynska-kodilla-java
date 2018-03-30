@@ -1,7 +1,6 @@
 package com.kodilla.patterns2.facade.aop;
 
 import com.kodilla.patterns2.facade.api.OrderDto;
-import com.kodilla.patterns2.facade.api.OrderFacade;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;

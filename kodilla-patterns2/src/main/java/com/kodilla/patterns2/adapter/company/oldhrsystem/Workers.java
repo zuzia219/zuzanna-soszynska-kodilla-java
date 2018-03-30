@@ -21,7 +21,7 @@ public class Workers {
         if(n > salaries.length) {
             return "";
         }
-        return workers[n][0] + ", " + workers[n][1] + ", " + workers[n][3] + ", " + salaries[n];
+        return workers[n][0] + ", " + workers[n][1] + ", " + workers[n][2] + ", " + salaries[n];
     }
 
     public String[][] getWorkers() {
