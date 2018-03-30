@@ -57,4 +57,13 @@ public class OrderFacade {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "OrderFacade{" +
+                "shopService=" + shopService +
+                '}';
+    }
+
+
 }
