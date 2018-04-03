@@ -2,6 +2,8 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.facade.SearchException;
+import com.kodilla.hibernate.manytomany.facade.SearchFacade;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -117,5 +119,4 @@ public class CompanyDaoTestSuite {
         companyDao.delete(softwareMachinesId);
 
     }
-
 }
