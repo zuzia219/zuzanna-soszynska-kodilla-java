@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SearchFacadeTestSuite {
@@ -25,43 +29,34 @@ public class SearchFacadeTestSuite {
 
         //Given
         Employee johnSmith = new Employee("John", "Smith");
-
         Company softwareMachines = new Company("Software Machines");
-
         softwareMachines.getEmployees().add(johnSmith);
-
         johnSmith.getCompanies().add(softwareMachines);
-
         //When
         companyDao.save(softwareMachines);
         int softwareMachinesId = softwareMachines.getId();
-
+        List<Company> companiesWithThreeFirsLetters = searchFacade.processCompanySearch(companyDao, "sof");
         //Then
-        searchFacade.processCompanySearch(companyDao, "sof");
-
+        assertNotEquals(0, softwareMachinesId);
+        assertEquals(1, companiesWithThreeFirsLetters.size());
         //CleanUp
         companyDao.delete(softwareMachinesId);
     }
 
     @Test
     public void testSearchFacadeEmployeeName() throws SearchException {
-
         //Given
         Employee johnSmith = new Employee("John", "Smith");
-
         Company softwareMachines = new Company("Software Machie");
-
         softwareMachines.getEmployees().add(johnSmith);
-
         johnSmith.getCompanies().add(softwareMachines);
-
         //When
         employeeDao.save(johnSmith);
         int johnSmithId = johnSmith.getId();
-
+        List<Employee> employeesWithSpecificLastName = searchFacade.processEmployeeSearch(employeeDao, "Smith");
         //Then
-        searchFacade.processEmployeeSearch(employeeDao, "Smith");
-
+        assertNotEquals(0, johnSmithId);
+        assertEquals(1, employeesWithSpecificLastName.size());
         //CleanUp
         employeeDao.delete(johnSmithId);
     }

@@ -15,23 +15,25 @@ import java.util.List;
 public class SearchFacade {
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchFacade.class);
 
-    public void processEmployeeSearch(EmployeeDao employeeDao, String employeeLastName) throws SearchException {
+    public List<Employee> processEmployeeSearch(EmployeeDao employeeDao, String employeeLastName) throws SearchException {
         if (employeeLastName.length() < 1) {
             LOGGER.error(SearchException.ERR_STRING_LENGTH_IS_ZERO);
             throw new SearchException(SearchException.ERR_STRING_LENGTH_IS_ZERO);
         }
         LOGGER.info("Beginning a search with phrase: -" + employeeLastName);
-        List<Employee> employeesWithSpecificLastNme = employeeDao.retrieveEmployeesByLastname(employeeLastName);
-        if (employeesWithSpecificLastNme.size() == 0) {
+        List<Employee> employeesWithSpecificLastName = employeeDao.retrieveEmployeesByLastname(employeeLastName);
+        if (employeesWithSpecificLastName.size() == 0) {
             LOGGER.info("There are no employees that match the search phrase: -" + employeeLastName);
         }
-        for (Employee theEmployee : employeesWithSpecificLastNme) {
+        for (Employee theEmployee : employeesWithSpecificLastName) {
             LOGGER.info("Employee that matches the search phrase: " + theEmployee.getFirstname() + " " + theEmployee.getLastname());
         }
         LOGGER.info("Search with phrase: -" + employeeLastName + "- has ended");
+
+        return employeesWithSpecificLastName;
     }
 
-    public void processCompanySearch(CompanyDao companyDao, String firstThreeLetters) throws SearchException {
+    public List<Company> processCompanySearch(CompanyDao companyDao, String firstThreeLetters) throws SearchException {
         if (firstThreeLetters.length() != 3) {
             LOGGER.error(SearchException.ERR_SUBSTRINGS_LENGTH_IS_NOT_THREE);
             throw new SearchException(SearchException.ERR_SUBSTRINGS_LENGTH_IS_NOT_THREE);
@@ -45,5 +47,6 @@ public class SearchFacade {
             LOGGER.info("Company that matches the search phrase: " + theCompany.getName());
         }
         LOGGER.info("Search with phrase: -" + firstThreeLetters + "- has ended");
+        return companiesWithThreeFirsLetters;
     }
 }
