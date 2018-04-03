@@ -6,7 +6,7 @@ public class Book {
     private final int publicationYear;
     private final String signature;
 
-    public Book(final String author,final String title,final int publicationYear,final String signature) {
+    public Book(final String author, final String title, final int publicationYear, final String signature) {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
