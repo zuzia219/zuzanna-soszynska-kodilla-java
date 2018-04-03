@@ -1,4 +1,4 @@
-package com.kodilla.patterns2;
+package com.kodilla.patterns2.adapter;
 
 import com.kodilla.patterns2.adapter.company.SalaryAdaptee;
 import com.kodilla.patterns2.adapter.company.newhrsystem.Employee;
