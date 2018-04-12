@@ -1,4 +1,4 @@
-include 'kodilla-testing'
+include 'kodilla-testing2'
 include 'kodilla-stream'
 include 'kodilla-rps'
 include 'kodilla-exception'
@@ -7,4 +7,5 @@ include 'kodilla-spring-intro'
 include 'kodilla-patterns'
 include 'kodilla-jdbc'
 include 'kodilla-sudoku'
+include 'kodilla-testing2'
 
